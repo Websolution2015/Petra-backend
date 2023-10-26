@@ -77,7 +77,7 @@ export const getJobById = async (req, res) => {
 
 export const contactUsController = async (req, res) => {
   const { firstName, lastName, email, message, phone } = req.body; // Assuming you send title and description in the request body
-  console.log(req.body);
+  
   try {
     const newContact = new contactUsModel({
       firstName,
