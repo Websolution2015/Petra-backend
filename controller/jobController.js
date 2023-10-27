@@ -167,7 +167,7 @@ export const resumeController = async (req, res) => {
 
     const mailOptions = {
       from: name,
-      to: 'Websolutiontest2015@gmail.com',
+      to: 'info@petrapower.com',
       subject: 'New Resume Submission',
       text: `A new resume has been submitted with the following details:
         Name: ${name}
