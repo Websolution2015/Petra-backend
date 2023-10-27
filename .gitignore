@@ -16,6 +16,4 @@ pids/
 *.seed
 *.pid.lock
 
-# Application-specific files
-public/uploads/
 dist/

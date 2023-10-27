@@ -2,8 +2,15 @@ import jobModel from "../models/jobModel.js";
 import contactUsModel from "../models/contactUsModel.js";
 import Resume from "../models/resumeSchema.js";
 import nodemailer from 'nodemailer';
+import { v2 as cloudinary } from 'cloudinary';
 
-// Controller to add a new job
+cloudinary.config({
+  cloud_name: 'df04essjr',
+  api_key: '628391574854572',
+  api_secret: 'XlB54R74QtmzOIfXafo9wlFUbbw',
+});
+
+
 export const addJob = async (req, res) => {
   const { title, description } = req.body; // Assuming you send title and description in the request body
   console.log(req.body);
@@ -189,3 +196,69 @@ export const resumeController = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while processing the file' });
   }
 };
+
+
+
+// export const resumeController = async (req, res) => {
+//   try {
+//     // Handle file uploads and form data
+//     const { name, email, phone } = req.body;
+//     const resume = req.file; // The uploaded file
+//     console.log(resume.path)
+
+//     // Upload the resume to Cloudinary
+//     const uploadResponse = await cloudinary.uploader.upload(resume.path, {
+//       resource_type: 'raw',
+//     })
+
+//     console.log(uploadResponse);
+
+//     // Send the resume as an email attachment using the secure_url from Cloudinary
+//     const transporter = nodemailer.createTransport({
+//       service: 'Gmail', // e.g., 'Gmail'
+//       auth: {
+//         user: 'helendeveloperhub@gmail.com',
+//         pass: 'oljm ujza inov firi',
+//       },
+//     });
+
+//     const mailOptions = {
+//       from: name,
+//       to: 'helendeveloperhub@gmail.com',
+//       subject: 'New Resume Submission',
+//       text: `A new resume has been submitted with the following details:
+//         Name: ${name}
+//         Email: ${email}
+//         Phone: ${phone}`,
+//       attachments: [
+//         {
+//           filename: resume.originalname,
+//           path: uploadResponse.secure_url, // Use the secure_url from Cloudinary
+//         },
+//       ],
+//     };
+
+//     transporter.sendMail(mailOptions, (error, info) => {
+//       if (error) {
+//         console.log('Email error:', error);
+//       } else {
+//         console.log('Email sent:', info.response);
+//       }
+//     });
+
+//     // Send a response to the client
+//     res.status(200).json({ message: 'File uploaded successfully' });
+//   } catch (error) {
+//     console.error('Error:', error);
+//     res.status(500).json({ error: 'An error occurred while processing the file' });
+//   }
+// };
+
+
+
+
+
+
+
+
+
