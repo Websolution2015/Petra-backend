@@ -101,7 +101,7 @@ export const contactUsController = async (req, res) => {
 
     const mailOptions = {
       from: `${firstName}`,
-      to: 'helendeveloperhub@gmail.com',
+      to: 'info@petrapower.com',
       subject: `New message from ${firstName}`,
       text: `
         First name: ${firstName}
@@ -191,6 +191,3 @@ export const resumeController = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while processing the file' });
   }
 };
-
-
-
